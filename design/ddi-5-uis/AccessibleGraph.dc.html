@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style> * { box-sizing: border-box; } body { margin:0; } </style>
+</helmet>
+<div style="width:1440px; height:900px; background:#FFFFFF; font-family:'Atkinson Hyperlegible', -apple-system, sans-serif; color:#14171A; padding:44px 56px;">
+
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:26px;">
+    <div>
+      <div style="font-size:14px; color:#44494F; margin-bottom:6px; font-weight:600;">Risk detail &gt; Interaction, severe</div>
+      <h1 style="margin:0; font-size:26px; font-weight:700;">Graph view</h1>
+    </div>
+    <button type="button" style="display:flex; align-items:center; gap:8px; padding:12px 20px; border-radius:8px; border:2px solid #14171A; background:#FFFFFF; color:#14171A; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; min-height:48px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      Back to risk detail
+    </button>
+  </div>
+
+  <div style="background:#FFFFFF; border:2px solid #14171A; border-radius:12px; padding:28px;">
+    <p style="margin:0 0 22px; font-size:16px; line-height:1.65; color:#14171A; max-width:780px;">Aspirin and warfarin both reduce blood clotting through different mechanisms. Taking them together compounds the bleeding risk, which is why this pair is flagged as severe.</p>
+
+    <div style="position:relative; width:100%; height:420px; border:2px solid #14171A; border-radius:10px; background:#F7F8FA;">
+      <svg width="100%" height="100%" viewBox="0 0 900 420">
+        <line x1="450" y1="70" x2="280" y2="220" stroke="#757575" stroke-width="2"/>
+        <line x1="450" y1="70" x2="620" y2="220" stroke="#757575" stroke-width="2"/>
+        <line x1="280" y1="220" x2="620" y2="220" stroke="#C81E1E" stroke-width="3.5"/>
+        <text x="450" y="205" text-anchor="middle" font-size="12" fill="#C81E1E" font-family="Atkinson Hyperlegible" font-weight="700">INTERACTS_WITH, severe</text>
+        <text x="365" y="150" text-anchor="middle" font-size="11.5" fill="#44494F" font-family="Atkinson Hyperlegible" font-weight="700">TAKES</text>
+        <text x="535" y="150" text-anchor="middle" font-size="11.5" fill="#44494F" font-family="Atkinson Hyperlegible" font-weight="700">TAKES</text>
+
+        <circle cx="450" cy="70" r="28" fill="#6A3FD1" stroke="#FFFFFF" stroke-width="3.5"/>
+        <text x="450" y="115" text-anchor="middle" font-size="14" fill="#14171A" font-family="Atkinson Hyperlegible" font-weight="700">Patient</text>
+
+        <circle cx="280" cy="220" r="28" fill="#0B4FCB" stroke="#FFFFFF" stroke-width="3.5"/>
+        <text x="280" y="265" text-anchor="middle" font-size="14" fill="#14171A" font-family="Atkinson Hyperlegible" font-weight="700">Aspirin</text>
+
+        <circle cx="620" cy="220" r="28" fill="#0B4FCB" stroke="#14171A" stroke-width="4"/>
+        <text x="620" y="265" text-anchor="middle" font-size="14" fill="#14171A" font-family="Atkinson Hyperlegible" font-weight="700">Warfarin</text>
+      </svg>
+    </div>
+
+    <div style="margin-top:20px;">
+      <div style="background:#F7F8FA; border:2px solid #757575; border-radius:8px; padding:14px 16px; font-size:15px;">
+        <strong>Drug:</strong> Warfarin <span style="color:#44494F; font-size:14px;"> (id: drug_warfarin_001)</span>
+      </div>
+      <div style="margin-top:10px; font-size:13.5px; color:#44494F;">Click a node to see its attributes. Scroll to zoom, drag to pan.</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

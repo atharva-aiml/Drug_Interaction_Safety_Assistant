@@ -1,0 +1,46 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1200, "h": 800, "page": "overview" },
+
+    { "file": "ClinicalAuth.dc.html", "x": 0, "y": 0, "w": 1440, "h": 900, "page": "dir-clinical" },
+    { "file": "ClinicalChat.dc.html", "x": 1560, "y": 0, "w": 1440, "h": 900, "page": "dir-clinical" },
+    { "file": "ClinicalStates.dc.html", "x": 3120, "y": 0, "w": 1440, "h": 1150, "page": "dir-clinical" },
+    { "file": "ClinicalGraph.dc.html", "x": 4680, "y": 0, "w": 1440, "h": 900, "page": "dir-clinical" },
+
+    { "file": "WarmAuth.dc.html", "x": 0, "y": 0, "w": 1440, "h": 900, "page": "dir-warm" },
+    { "file": "WarmChat.dc.html", "x": 1560, "y": 0, "w": 1440, "h": 900, "page": "dir-warm" },
+    { "file": "WarmStates.dc.html", "x": 3120, "y": 0, "w": 1440, "h": 1150, "page": "dir-warm" },
+    { "file": "WarmGraph.dc.html", "x": 4680, "y": 0, "w": 1440, "h": 900, "page": "dir-warm" },
+
+    { "file": "ConsoleAuth.dc.html", "x": 0, "y": 0, "w": 1440, "h": 900, "page": "dir-console" },
+    { "file": "ConsoleChat.dc.html", "x": 1560, "y": 0, "w": 1440, "h": 900, "page": "dir-console" },
+    { "file": "ConsoleStates.dc.html", "x": 3120, "y": 0, "w": 1440, "h": 1150, "page": "dir-console" },
+    { "file": "ConsoleGraph.dc.html", "x": 4680, "y": 0, "w": 1440, "h": 900, "page": "dir-console" },
+
+    { "file": "BoldAuth.dc.html", "x": 0, "y": 0, "w": 1440, "h": 900, "page": "dir-bold" },
+    { "file": "BoldChat.dc.html", "x": 1560, "y": 0, "w": 1440, "h": 900, "page": "dir-bold" },
+    { "file": "BoldStates.dc.html", "x": 3120, "y": 0, "w": 1440, "h": 1150, "page": "dir-bold" },
+    { "file": "BoldGraph.dc.html", "x": 4680, "y": 0, "w": 1440, "h": 900, "page": "dir-bold" },
+
+    { "file": "AccessibleAuth.dc.html", "x": 0, "y": 0, "w": 1440, "h": 900, "page": "dir-accessible" },
+    { "file": "AccessibleChat.dc.html", "x": 1560, "y": 0, "w": 1440, "h": 900, "page": "dir-accessible" },
+    { "file": "AccessibleStates.dc.html", "x": 3120, "y": 0, "w": 1440, "h": 1150, "page": "dir-accessible" },
+    { "file": "AccessibleGraph.dc.html", "x": 4680, "y": 0, "w": 1440, "h": 900, "page": "dir-accessible" }
+  ],
+  "annotations": [
+    { "id": "note-clinical", "x": 0, "y": -170, "w": 640, "page": "dir-clinical", "text": "1. Clinical Signal Evolved\nThe product's existing graphite-and-cobalt palette, refined: IBM Plex type, quieter surfaces, severity kept strictly on its own warm ramp. Closest to today's app." },
+    { "id": "note-warm", "x": 0, "y": -170, "w": 640, "page": "dir-warm", "text": "2. Human Warmth\nA patient-facing register: bone background, deep forest green, rounded pill controls and generous line-height, for someone anxious about their own medications." },
+    { "id": "note-console", "x": 0, "y": -170, "w": 640, "page": "dir-console", "text": "3. Dark Console\nA dense, dark power tool for a pharmacist working fast: monospace data, hairline dividers, one cyan signal color reserved for live and active state." },
+    { "id": "note-bold", "x": 0, "y": -170, "w": 640, "page": "dir-bold", "text": "4. Bold Modern\nAn energetic health-tech read: asymmetric hero, a right-hand context rail for the active risk, one saturated electric blue accent doing all the work." },
+    { "id": "note-accessible", "x": 0, "y": -170, "w": 640, "page": "dir-accessible", "text": "5. Plain and Accessible\nLarge type, high contrast, one restrained blue accent, 44px+ targets throughout. Built for a busy pharmacist floor and for older patients alike." }
+  ],
+  "pages": [
+    { "id": "overview", "name": "Overview" },
+    { "id": "dir-clinical", "name": "1. Clinical Signal" },
+    { "id": "dir-warm", "name": "2. Human Warmth" },
+    { "id": "dir-console", "name": "3. Dark Console" },
+    { "id": "dir-bold", "name": "4. Bold Modern" },
+    { "id": "dir-accessible", "name": "5. Plain and Accessible" }
+  ],
+  "launch": { "view": "canvas", "page": "overview" }
+}

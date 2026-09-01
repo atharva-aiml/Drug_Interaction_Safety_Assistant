@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .wf-sess { display:flex; align-items:center; gap:6px; padding:10px 12px; border-radius:12px; cursor:pointer; }
+  .wf-sess-title { flex:1; font-size:13px; color:#4B4A3E; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; background:none; border:none; text-align:left; padding:0; font-family:inherit; cursor:pointer; }
+  .wf-icon-btn { width:24px; height:24px; border-radius:8px; border:none; background:transparent; display:flex; align-items:center; justify-content:center; color:#A7A492; cursor:pointer; flex-shrink:0; }
+  .wf-chip { display:inline-flex; align-items:center; gap:6px; padding:3px 10px 3px 3px; border-radius:999px; background:#F4F5EE; border:1px solid #E3E0D3; font-size:11.5px; }
+</style>
+</helmet>
+<div style="width:1440px; height:900px; background:#F4F5EE; font-family:'Plus Jakarta Sans', -apple-system, sans-serif; display:flex; color:#2B2A22;">
+
+  <div style="width:272px; height:100%; background:#FBFAF6; border-right:1.5px solid #E3E0D3; display:flex; flex-direction:column; padding:22px 18px;">
+    <div style="display:flex; align-items:center; gap:10px; padding:0 4px 22px;">
+      <div style="width:34px; height:34px; border-radius:17px; background:#1F4D3D; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:12.5px;">DI</div>
+      <div style="font-weight:700; font-size:13px; line-height:1.3; color:#2B2A22;">Drug Interaction<br/>Safety Assistant</div>
+    </div>
+
+    <button type="button" style="width:100%; padding:11px; border-radius:999px; border:none; background:#1F4D3D; color:#fff; font-size:13.5px; font-weight:700; font-family:inherit; cursor:pointer; margin-bottom:12px;">+ New chat</button>
+    <input value="" placeholder="Search chats&hellip;" readonly style="width:100%; padding:9px 13px; border-radius:999px; border:1.5px solid #E3E0D3; font-size:12.5px; font-family:inherit; margin-bottom:16px; color:#6B6A5D; background:#FFFFFF;">
+
+    <div style="display:flex; flex-direction:column; gap:3px; overflow:hidden;">
+      <div class="wf-sess" style="background:#EAF3EE;">
+        <button class="wf-sess-title" style="color:#1F4D3D; font-weight:700;">Aspirin and warfarin check</button>
+        <button class="wf-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 4.5l4 4L8 20H4v-4L15.5 4.5z"/></svg></button>
+        <button class="wf-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7h15M9 7V4.75A1.25 1.25 0 0 1 10.25 3.5h3.5A1.25 1.25 0 0 1 15 4.75V7M6.5 7l1 12.25A1.5 1.5 0 0 0 9 20.75h6a1.5 1.5 0 0 0 1.5-1.5L17.5 7"/></svg></button>
+      </div>
+      <div class="wf-sess"><button class="wf-sess-title">Penicillin allergy question</button><button class="wf-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 4.5l4 4L8 20H4v-4L15.5 4.5z"/></svg></button><button class="wf-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7h15M9 7V4.75A1.25 1.25 0 0 1 10.25 3.5h3.5A1.25 1.25 0 0 1 15 4.75V7M6.5 7l1 12.25A1.5 1.5 0 0 0 9 20.75h6a1.5 1.5 0 0 0 1.5-1.5L17.5 7"/></svg></button></div>
+      <div class="wf-sess"><button class="wf-sess-title">Ibuprofen dosage question</button><button class="wf-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 4.5l4 4L8 20H4v-4L15.5 4.5z"/></svg></button><button class="wf-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7h15M9 7V4.75A1.25 1.25 0 0 1 10.25 3.5h3.5A1.25 1.25 0 0 1 15 4.75V7M6.5 7l1 12.25A1.5 1.5 0 0 0 9 20.75h6a1.5 1.5 0 0 0 1.5-1.5L17.5 7"/></svg></button></div>
+      <div class="wf-sess"><button class="wf-sess-title">General interaction question</button><button class="wf-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 4.5l4 4L8 20H4v-4L15.5 4.5z"/></svg></button><button class="wf-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7h15M9 7V4.75A1.25 1.25 0 0 1 10.25 3.5h3.5A1.25 1.25 0 0 1 15 4.75V7M6.5 7l1 12.25A1.5 1.5 0 0 0 9 20.75h6a1.5 1.5 0 0 0 1.5-1.5L17.5 7"/></svg></button></div>
+    </div>
+
+    <div style="margin-top:auto; padding-top:18px; border-top:1.5px solid #E3E0D3; display:flex; flex-direction:column; gap:12px;">
+      <div style="font-size:12.5px; line-height:1.5;">
+        <strong style="display:block; color:#2B2A22;">j.martinez</strong>
+        <span style="color:#8C8A78;">Standard user</span>
+      </div>
+      <button type="button" style="display:flex; align-items:center; gap:8px; padding:9px 6px; border:none; background:transparent; color:#5B6B5D; font-size:13px; font-family:inherit; cursor:pointer;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H6a1.5 1.5 0 0 0-1.5 1.5v13A1.5 1.5 0 0 0 6 20h3M15 16l4-4-4-4M19 12H9"/></svg>
+        Log out
+      </button>
+    </div>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+    <div style="padding:11px 36px; background:#EAF3EE; border-bottom:1.5px solid #DCEAE3; font-size:12px; color:#1F4D3D; text-align:center;">
+      This assistant does not provide medical advice and is not a substitute for a healthcare professional. In an emergency, call your local emergency number immediately.
+    </div>
+
+    <div style="flex:1; overflow:hidden; padding:30px 40px; display:flex; flex-direction:column; gap:22px;">
+
+      <div style="align-self:flex-end; max-width:520px; background:#1F4D3D; color:#fff; border-radius:20px 20px 4px 20px; padding:14px 18px; font-size:14.5px; line-height:1.55;">
+        I'm taking aspirin daily and my doctor just prescribed warfarin. Is that combination going to be a problem?
+      </div>
+
+      <div style="align-self:flex-start; max-width:600px;">
+        <div style="background:#FFFFFF; border:1.5px solid #E3E0D3; border-radius:20px 20px 20px 4px; padding:18px 20px;">
+          <div style="font-size:11.5px; font-weight:700; color:#1F4D3D; margin-bottom:9px;">Assistant</div>
+          <div style="font-size:14.5px; line-height:1.65; color:#3A3930;">Combining aspirin and warfarin increases the risk of serious bleeding, because both drugs affect how your blood clots and the effect is additive. This is flagged as a <strong>severe interaction</strong> in your profile. Confirm this combination with your prescriber before continuing, and watch for unusual bruising, bleeding gums, or blood in urine or stool.</div>
+          <div style="display:flex; gap:8px; margin-top:14px;">
+            <span class="wf-chip"><span style="padding:3px 8px; border-radius:999px; background:#F8DFD3; color:#C2410C; font-weight:700; font-size:10.5px; text-transform:uppercase;">severe</span>Interaction</span>
+          </div>
+          <div style="margin-top:12px; display:inline-flex; align-items:center; gap:6px; font-size:12px; color:#2F7A55; font-weight:600;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 7"/></svg>
+            Checked against your data
+          </div>
+          <div style="margin-top:14px; padding-top:12px; border-top:1px solid #F2F0E7;">
+            <span style="font-size:11px; color:#A7A492;">2:14 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="align-self:flex-end; max-width:520px; background:#1F4D3D; color:#fff; border-radius:20px 20px 4px 20px; padding:14px 18px; font-size:14.5px; line-height:1.55;">
+        What generally counts as a drug interaction?
+      </div>
+
+      <div style="align-self:flex-start; max-width:600px;">
+        <div style="background:#FFFFFF; border:1.5px solid #E3E0D3; border-radius:20px 20px 20px 4px; padding:18px 20px;">
+          <div style="font-size:11.5px; font-weight:700; color:#1F4D3D; margin-bottom:9px;">Assistant</div>
+          <div style="font-size:14.5px; line-height:1.65; color:#3A3930;">A drug interaction happens when one medicine changes how another one works in your body, making it stronger, weaker, or causing a new side effect. I haven't checked this against your personal medication list, since you didn't ask about a specific drug of yours.</div>
+          <div style="margin-top:12px; display:inline-flex; align-items:center; gap:6px; font-size:12px; color:#8C8A78; font-weight:500;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.01" stroke-linecap="round"/></svg>
+            General information, not a personal check
+          </div>
+          <div style="margin-top:14px; padding-top:12px; border-top:1px solid #F2F0E7; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:11px; color:#A7A492;">2:16 PM</span>
+            <button type="button" style="display:flex; align-items:center; gap:5px; border:none; background:transparent; color:#1F4D3D; font-size:12px; font-weight:700; font-family:inherit; cursor:pointer;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5M18 3v5h-5M6 21v-5h5"/></svg>
+              Regenerate
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div style="align-self:center; font-size:11px; color:#A7A492; text-transform:uppercase; letter-spacing:0.05em;">Emergency detection example</div>
+
+      <div style="align-self:flex-start; max-width:600px;">
+        <div style="background:#FBE8E3; border:1.5px solid #F0C2B3; border-radius:18px; padding:18px 20px;">
+          <div style="display:flex; align-items:center; gap:8px; font-weight:700; color:#8C2F14; font-size:14px; margin-bottom:7px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L3 20h18L12 4z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="0.5" fill="currentColor" stroke="none"/></svg>
+            Possible medical emergency
+          </div>
+          <div style="font-size:14px; line-height:1.6; color:#8C2F14;">If you're having trouble breathing or think you've taken too much medication, call your local emergency number right now. This assistant can't help in an emergency.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="padding:18px 40px 28px; display:flex; gap:12px; align-items:flex-end;">
+      <div style="flex:1; padding:14px 18px; border-radius:20px; border:1.5px solid #E3E0D3; background:#FFFFFF; font-size:14.5px; color:#8C8A78; min-height:48px;">Ask about your medications, e.g. "I am taking aspirin and warfarin together, am I exposed to any risks?"</div>
+      <button type="button" style="padding:14px 26px; border-radius:999px; border:none; background:#1F4D3D; color:#fff; font-size:14.5px; font-weight:700; font-family:inherit; cursor:pointer; white-space:nowrap;">Send</button>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

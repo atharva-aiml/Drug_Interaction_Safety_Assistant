@@ -1,0 +1,2049 @@
+/* ==========================================================================
+   Design tokens — "Bold Modern"
+   Cool off-white neutrals + one saturated electric-blue accent, kept off
+   every other surface so severity — the one thing that must never be
+   ambiguous — can own the warm end of the spectrum by itself. Green stays
+   reserved exclusively for "no risk found" / success states.
+   ========================================================================== */
+:root {
+  /* Neutrals — cool blue-tinted scale */
+  --gray-25: #FCFCFE;
+  --gray-50: #F5F6FB;
+  --gray-100: #EEF1FF;
+  --gray-200: #E1E4F0;
+  --gray-300: #C7CCE0;
+  --gray-400: #A6ABBE;
+  --gray-500: #8189A0;
+  --gray-600: #5A6479;
+  --gray-700: #3D4459;
+  --gray-800: #1A2237;
+  --gray-900: #0B1220;
+
+  --color-bg-app: var(--gray-50);
+  --color-bg-page: #FFFFFF;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-surface-sunken: var(--gray-50);
+  --color-bg-overlay: rgba(11, 18, 32, 0.55);
+  --color-border-default: var(--gray-200);
+  --color-border-strong: var(--gray-300);
+  --color-text-primary: var(--gray-900);
+  --color-text-secondary: var(--gray-600);
+  --color-text-disabled: var(--gray-400);
+  --color-text-inverse: #FFFFFF;
+
+  /* Primary — saturated electric blue, the one accent this app uses */
+  --color-primary-50: #EEF1FF;
+  --color-primary-100: #DCE3FF;
+  --color-primary-500: #2F5CFF;
+  --color-primary-600: #1E46E0;
+  --color-primary-700: #16339E;
+  --color-action-default: var(--color-primary-500);
+  --color-action-hover: var(--color-primary-600);
+  --color-action-active: var(--color-primary-700);
+  --color-action-subtle-bg: var(--color-primary-50);
+
+  /* Semantic (form validation / status — distinct from clinical severity) */
+  --color-success: #1E9E6D;
+  --color-success-bg: #E3F7EE;
+  --color-warning: #C9821A;
+  --color-warning-bg: #FCEEDC;
+  --color-error: #C22B15;
+  --color-error-bg: #FDE6E3;
+  --color-info: var(--color-primary-500);
+  --color-info-bg: var(--color-primary-50);
+
+  /* Clinical severity — a deliberate warm 4-step escalation. Never green:
+     "no risk found" is the only thing in this app allowed to be green. */
+  --color-severity-minor: #C9821A;
+  --color-severity-minor-bg: #FCEEDC;
+  --color-severity-moderate: #D9631F;
+  --color-severity-moderate-bg: #FCE3D6;
+  --color-severity-severe: #E8442F;
+  --color-severity-severe-bg: #FDE6E3;
+  --color-severity-contraindicated: #B01D3A;
+  --color-severity-contraindicated-bg: #FBDCE3;
+
+  /* Categorical graph-node colors — a cool family, deliberately separate
+     from the warm severity ramp so "what kind of thing" never reads as
+     "how dangerous." */
+  --color-node-drug: var(--color-primary-500);
+  --color-node-patient: #7C5CFF;
+  --color-node-allergen: #0EA5B0;
+  --color-node-disease: #DB2777;
+  --color-node-side-effect: #16A34A;
+
+  /* Typography */
+  --font-family-ui: "Sora", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-base: 0.9375rem;
+  --font-size-lg: 1.0625rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.55;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing — 4px base scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Structure — pill controls, generous card radius, one consistent scale */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-bubble: 18px;
+  --radius-pill: 999px;
+  --shadow-xs: 0 1px 2px rgba(11, 18, 32, 0.05);
+  --shadow-sm: 0 2px 8px rgba(11, 18, 32, 0.06);
+  --shadow-md: 0 8px 24px rgba(11, 18, 32, 0.08);
+  --shadow-lg: 0 20px 50px rgba(11, 18, 32, 0.14);
+  --shadow-accent: 0 8px 20px rgba(47, 92, 255, 0.28);
+  --focus-ring: 0 0 0 4px var(--color-primary-100), 0 0 0 1.5px var(--color-action-default);
+  --transition-fast: 120ms ease;
+  --transition-base: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --sidebar-width: 232px;
+  --chat-sidebar-width: 264px;
+  --chat-sidebar-collapsed-width: 76px;
+  --risk-rail-width: 296px;
+  --risk-rail-collapsed-width: 56px;
+  --content-max-width: 1440px;
+  --form-max-width: 640px;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg-app);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-ui);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-family-ui);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+  margin: 0;
+}
+
+h1 { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); letter-spacing: -0.01em; }
+h2 { font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); letter-spacing: -0.01em; }
+h3 { font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); }
+
+p { margin: 0; }
+
+a { color: var(--color-action-default); }
+
+/* Visible on every interactive element for keyboard users — never rely on
+   default browser focus styling, but never remove it without replacing it. */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   Auto-hiding scrollbars — every scrollable element in the app. Invisible at
+   rest; `useAutoHideScrollbar` (apps/web/src/ui/useAutoHideScrollbar.ts) adds
+   `.scroll-active` to an element while it's being scrolled and removes it a
+   moment after scrolling stops, so this transition alone drives the fade
+   in/out. WebKit/Chromium only (`::-webkit-scrollbar` has no Firefox
+   equivalent) — Firefox falls back to a slim static `scrollbar-width: thin`
+   bar instead of the fade, which is still unobtrusive.
+   ========================================================================== */
+/* Two mechanisms, kept in lockstep, because which one actually paints
+   depends on the browser version: recent Chromium (121+) supports the
+   standard `scrollbar-color`/`scrollbar-width` properties directly and can
+   prioritize them over the legacy `::-webkit-scrollbar-*` pseudo-elements
+   for the same element, while older engines only honor the legacy path.
+   Toggling only one of the two left real users with a permanently
+   invisible scrollbar on newer Chrome even while actively scrolling. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 500ms ease;
+}
+*.scroll-active {
+  scrollbar-color: rgba(90, 100, 121, 0.55) transparent;
+  transition: scrollbar-color 150ms ease;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  background-clip: padding-box;
+  transition: background-color 500ms ease;
+}
+*.scroll-active::-webkit-scrollbar-thumb {
+  background-color: rgba(90, 100, 121, 0.45);
+  transition: background-color 150ms ease;
+}
+*.scroll-active::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(90, 100, 121, 0.65);
+}
+
+/* ==========================================================================
+   App shell — the chat page now owns the full viewport edge to edge; this
+   just frames GraphView's "page" chrome when it's swapped in.
+   ========================================================================== */
+.app-shell {
+  min-height: 100vh;
+  background: var(--color-bg-app);
+}
+
+.app-brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--gray-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.page-header-text p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-1);
+}
+
+.page-actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+/* Safety net: any bare <button> without an explicit .btn-* class still gets
+   a real, visible style — never falls back to unstyled browser chrome. */
+button {
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-border-strong);
+  background: var(--color-bg-surface);
+  color: var(--color-action-default);
+  cursor: pointer;
+}
+button:hover { background: var(--color-action-subtle-bg); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-pill);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--color-action-default);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-accent);
+}
+.btn-primary:hover { background: var(--color-action-hover); }
+.btn-primary:active { background: var(--color-action-active); }
+.btn-primary:disabled {
+  background: var(--gray-200);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-strong);
+}
+.btn-secondary:hover { background: var(--color-action-subtle-bg); border-color: var(--color-action-default); color: var(--color-action-default); }
+.btn-secondary:active { background: var(--color-primary-100); }
+.btn-secondary:disabled {
+  color: var(--color-text-disabled);
+  border-color: var(--color-border-default);
+  cursor: not-allowed;
+  background: var(--color-bg-surface);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-color: transparent;
+}
+.btn-ghost:hover { background: var(--gray-100); color: var(--color-action-default); }
+
+.btn-sm { padding: var(--space-1) var(--space-3); font-size: var(--font-size-xs); }
+
+/* ==========================================================================
+   Tooltip — CSS-only, for icon-only controls whose accessible name (still
+   set via `aria-label`) has no visible text. Attach `data-tooltip="Label"`
+   to any positioned-or-positionable element. Fades in after a short delay
+   on hover/focus (so it doesn't flash on a quick mouse pass) and fades out
+   immediately on leaving.
+   ========================================================================== */
+[data-tooltip] { position: relative; }
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%) translateY(3px);
+  background: var(--gray-900);
+  color: #FFFFFF;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  z-index: 40;
+}
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity var(--transition-fast) 350ms, transform var(--transition-fast) 350ms;
+}
+[data-tooltip]:disabled::after { content: none; }
+/* For controls that sit at the very top of their panel, where a
+   tooltip-above would clip against the viewport edge. */
+[data-tooltip-pos="bottom"]::after {
+  bottom: auto;
+  top: calc(100% + 7px);
+  transform: translateX(-50%) translateY(-3px);
+}
+[data-tooltip-pos="bottom"]:hover::after,
+[data-tooltip-pos="bottom"]:focus-visible::after {
+  transform: translateX(-50%) translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-tooltip]::after { transition: none; }
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+.field {
+  margin-bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.field label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.field-hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.field-error {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="file"],
+input:not([type]),
+select {
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  width: 100%;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%235A6479' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  padding-right: var(--space-8);
+}
+
+input:hover, select:hover { border-color: var(--gray-400); }
+
+input:focus-visible, select:focus-visible {
+  outline: none;
+  border-color: var(--color-action-default);
+  box-shadow: var(--focus-ring);
+}
+
+input::placeholder { color: var(--color-text-disabled); }
+
+input:disabled, select:disabled {
+  background: var(--color-bg-surface-sunken);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.input-error {
+  border-color: var(--color-error) !important;
+}
+
+/* ==========================================================================
+   Cards / surfaces
+   ========================================================================== */
+.card {
+  background: var(--color-bg-surface);
+  border: 1.5px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-3);
+}
+
+.card-sunken {
+  background: var(--color-bg-surface-sunken);
+  box-shadow: none;
+}
+
+.card h3 {
+  margin: 0 0 var(--space-1);
+}
+
+.card p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* ==========================================================================
+   Badges / pills
+   ========================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+.badge-minor { background: var(--color-severity-minor-bg); color: var(--color-severity-minor); }
+.badge-moderate { background: var(--color-severity-moderate-bg); color: var(--color-severity-moderate); }
+.badge-severe { background: var(--color-severity-severe-bg); color: var(--color-severity-severe); }
+.badge-contraindicated { background: var(--color-severity-contraindicated-bg); color: var(--color-severity-contraindicated); }
+
+.badge-outline {
+  background: transparent;
+  border: 1.5px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-pill);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xs);
+}
+
+/* ==========================================================================
+   States: loading / empty / error
+   ========================================================================== */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-border-default);
+  border-top-color: var(--color-action-default);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin { animation: spin 0.9s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .spin { animation: none; }
+}
+
+.loading-panel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  padding: var(--space-6);
+  justify-content: center;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 37%, var(--gray-100) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.error-banner {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+  border: 1.5px solid color-mix(in srgb, var(--color-error) 25%, white);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.empty-state-positive {
+  color: var(--color-success);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-success-bg);
+  border: 1.5px solid color-mix(in srgb, var(--color-success) 22%, white);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ==========================================================================
+   Auth screen — asymmetric split: dark brand panel + a glassy card
+   ========================================================================== */
+.auth-shell {
+  min-height: 100vh;
+  display: flex;
+  background:
+    radial-gradient(1100px circle at 100% 0%, rgba(47, 92, 255, 0.12), transparent 55%),
+    #FFFFFF;
+  position: relative;
+}
+
+.auth-panel-brand {
+  width: 46%;
+  min-width: 480px;
+  padding: var(--space-12) var(--space-12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--color-text-primary);
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.auth-headline {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold, 800);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 420px;
+  margin: 0 0 var(--space-6);
+  color: var(--color-text-primary);
+}
+
+.auth-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-feature-item {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+}
+
+.auth-feature-item svg {
+  margin-top: 2px;
+  flex-shrink: 0;
+  color: var(--color-action-default);
+}
+
+.auth-footnote {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-disabled);
+}
+
+.auth-panel-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+/* No card, no border, no shadow — the sign-in/sign-up form sits directly on
+   the page, matching the plain reference layout (only the left brand panel
+   keeps its own distinct treatment). */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-form-heading {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold, 800);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.auth-form-subtitle {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-6);
+}
+
+.auth-card .field { margin-bottom: var(--space-5); }
+
+/* Square-with-rounded-corners, not the pill shape `.btn-primary` uses
+   elsewhere in the app — matches the rounded-rect inputs above it. */
+.auth-card .btn-primary { border-radius: var(--radius-md); }
+
+.auth-form-toggle-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: var(--space-4);
+  padding: var(--space-1);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  cursor: pointer;
+}
+.auth-form-toggle-btn:hover { background: transparent; }
+.auth-form-toggle-link {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .auth-shell { flex-direction: column; }
+  .auth-panel-brand { width: 100%; min-width: 0; padding: var(--space-8) var(--space-6); }
+  .auth-headline { font-size: var(--font-size-2xl); }
+}
+
+/* ==========================================================================
+   Misc layout helpers
+   ========================================================================== */
+.row { display: flex; align-items: center; }
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+
+/* ==========================================================================
+   Chat (SCR-010) — V2.5 "Safety-First" redesign. A single plain-white
+   canvas: a persistent top disclaimer strip, then a collapsible icon
+   sidebar, a centered transcript/hero column, and (only when the session
+   has flagged risks) a right-hand risk rail blending into the same white
+   page. No section dividers, no filled-background buttons anywhere below
+   the top strip — every control is icon/text with a hover tint only.
+   ========================================================================== */
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--color-bg-page);
+}
+
+/* V2.5 — persistent safety notice; leads every screen instead of trailing
+   under the composer, so it's the first thing read, not the last. */
+.chat-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-align: center;
+  flex-shrink: 0;
+}
+.chat-topbar svg { flex-shrink: 0; color: var(--color-text-secondary); }
+
+.chat-body-row {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+/* ---- Sidebar ---- */
+.chat-sidebar {
+  width: var(--chat-sidebar-width);
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-3);
+  background: var(--color-bg-page);
+  transition: width var(--transition-base), padding var(--transition-base);
+}
+.chat-sidebar.collapsed {
+  width: var(--chat-sidebar-collapsed-width);
+  align-items: center;
+  padding: var(--space-4) var(--space-2);
+}
+
+.chat-sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-1) var(--space-1) var(--space-5);
+  transition: padding var(--transition-base), gap var(--transition-base);
+}
+.chat-sidebar.collapsed .chat-sidebar-top {
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: 0 0 var(--space-3);
+}
+
+.chat-brand-toggle {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  line-height: 0;
+}
+.chat-brand-toggle:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.chat-sidebar-collapse-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.chat-sidebar-collapse-btn svg { flex-shrink: 0; }
+.chat-sidebar-collapse-btn:hover { background: var(--gray-100); color: var(--color-text-primary); }
+.chat-sidebar-collapse-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.chat-nav-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  transition: background var(--transition-fast), width var(--transition-base), height var(--transition-base), padding var(--transition-base);
+}
+.chat-nav-row:hover { background: var(--gray-100); }
+.chat-nav-row:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.chat-nav-row svg { flex-shrink: 0; color: var(--color-text-secondary); }
+.chat-sidebar.collapsed .chat-nav-row {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  justify-content: center;
+}
+.chat-nav-label {
+  opacity: 1;
+  max-width: 160px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast), max-width var(--transition-base);
+}
+.chat-sidebar.collapsed .chat-nav-label { opacity: 0; max-width: 0; }
+
+/* V2.3.3 — client-side search, now an icon row that expands into an input
+   in place, instead of an always-visible search box. */
+.chat-sidebar-search-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--gray-50);
+}
+.chat-sidebar-search-box svg { flex-shrink: 0; color: var(--color-text-secondary); }
+.chat-sidebar-search-box input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  /* Resets the global bordered-input rule's padding (styles.css ~L361) —
+     this input is embedded in the pill's own padding, not a standalone field;
+     without this it stacks on top and makes the whole pill visibly grow the
+     moment it opens. */
+  padding: 0;
+}
+.chat-sidebar-search-box input::placeholder { color: var(--color-text-disabled); }
+/* Overrides the global input focus ring (`--focus-ring`) — the pill itself
+   is the input here, so a glow around it reads as an unwanted extra border. */
+.chat-sidebar-search-box input:focus-visible { box-shadow: none; }
+/* `type="search"` renders its own native clear button in Chrome/Safari/Edge —
+   redundant with (and visually doubled up next to) the app's own custom
+   `.chat-sidebar-search-clear` "x" button, so it's suppressed here. */
+.chat-sidebar-search-box input[type="search"]::-webkit-search-cancel-button,
+.chat-sidebar-search-box input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.chat-sidebar-search-box input[type="search"]::-ms-clear { display: none; width: 0; height: 0; }
+.chat-sidebar-search-clear {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+}
+.chat-sidebar-search-clear:hover { background: var(--gray-100); color: var(--color-text-primary); }
+
+.chat-sidebar-recents {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transition-fast), visibility 0s linear 0s;
+}
+/* Fades out first, then leaves the tab order once fully hidden — `display:
+   none` would snap instantly and still pop back all at once on expand. */
+.chat-sidebar.collapsed .chat-sidebar-recents {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), visibility 0s linear var(--transition-fast);
+}
+
+.chat-sidebar-section-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-disabled);
+  padding: var(--space-4) var(--space-3) var(--space-1);
+}
+
+/* Sub-labels for the "Pinned" / "Recents" grouping inside the scrollable area
+   (as opposed to `.chat-sidebar-section-label`, the panel's single static header). */
+.chat-sidebar-section-sublabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-disabled);
+  padding: var(--space-3) var(--space-3) var(--space-1);
+}
+
+.chat-sidebar-loading,
+.chat-sidebar-empty {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  padding: var(--space-2) var(--space-3);
+}
+
+.chat-session-scroll {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.chat-session-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.chat-session-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: transparent;
+  border-radius: var(--radius-md);
+  padding-right: var(--space-1);
+}
+.chat-session-item:hover { background: var(--gray-50); }
+.chat-session-item.active { background: var(--color-action-subtle-bg); }
+.chat-session-item.active .chat-session-item-title {
+  color: var(--color-action-default);
+  font-weight: var(--font-weight-bold);
+}
+
+.chat-session-item-title {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  padding: var(--space-2) 0 var(--space-2) var(--space-3);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+.chat-session-item-title:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.chat-session-item-title-clip {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.chat-session-item-title-clip.fade-end {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
+}
+.chat-session-item-title-text {
+  display: inline-block;
+  transition-property: transform;
+  transition-timing-function: linear;
+}
+
+.chat-session-item-action {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-disabled);
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0;
+}
+.chat-session-item:hover .chat-session-item-action,
+.chat-session-item-action:focus-visible,
+.chat-session-item-action-open { opacity: 1; }
+.chat-session-item-action:hover { background: var(--color-bg-surface); color: var(--color-text-primary); }
+
+.chat-session-menu-container { position: relative; display: flex; flex-shrink: 0; }
+
+.chat-session-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 20;
+  min-width: 148px;
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: var(--space-1);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-4px) scale(0.97);
+  transform-origin: top right;
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+.chat-session-menu.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.chat-session-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  padding: var(--space-2) var(--space-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  text-align: left;
+}
+.chat-session-menu-item:hover { background: var(--gray-50); }
+.chat-session-menu-item-danger { color: var(--color-error); }
+.chat-session-menu-item-danger:hover { background: color-mix(in srgb, var(--color-error) 10%, transparent); }
+
+.chat-sidebar-footer {
+  margin-top: auto;
+  padding-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.chat-sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-2);
+  border-radius: var(--radius-md);
+  transition: padding var(--transition-base);
+}
+.chat-sidebar.collapsed .chat-sidebar-user { padding: var(--space-1); justify-content: center; }
+
+.chat-sidebar-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-action-default);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.chat-sidebar-user-text {
+  min-width: 0;
+  max-width: 160px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast), max-width var(--transition-base);
+}
+.chat-sidebar-user-text strong {
+  display: block;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chat-sidebar.collapsed .chat-sidebar-user-text { opacity: 0; max-width: 0; }
+
+.chat-sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-2);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast), color var(--transition-fast),
+    width var(--transition-base), height var(--transition-base), padding var(--transition-base);
+}
+.chat-sidebar-logout svg { flex-shrink: 0; }
+.chat-sidebar-logout:hover { background: var(--gray-100); color: var(--color-text-primary); }
+.chat-sidebar-logout:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.chat-sidebar.collapsed .chat-sidebar-logout {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  justify-content: center;
+}
+.chat-sidebar-logout-label {
+  opacity: 1;
+  max-width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast), max-width var(--transition-base);
+}
+.chat-sidebar.collapsed .chat-sidebar-logout-label { opacity: 0; max-width: 0; }
+
+/* ---- Main column ---- */
+.chat-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-page);
+  overflow: hidden;
+}
+
+/* Landing/hero state — shown whenever the active session has no messages
+   yet (including "no session selected"). Centered ask-bar, one headline. */
+.chat-hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-8);
+}
+.chat-hero-inner {
+  max-width: 640px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: -48px;
+}
+.chat-hero-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-align: center;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.chat-hero-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: var(--line-height-normal);
+  max-width: 460px;
+  margin: 0;
+}
+
+/* V2.3.4 — paginated older-message loading. */
+.chat-load-older {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-2);
+}
+
+.chat-transcript-area {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-transcript {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--space-5) var(--space-10) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 760px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Fades scrolled content into the page background right above the composer,
+   instead of a hard clip, per the reference "fade into the ask-bar" look. */
+.chat-transcript-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg-page) 90%);
+  pointer-events: none;
+}
+
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.chat-message-user { align-items: flex-end; }
+.chat-message-assistant { align-items: stretch; }
+
+.chat-message-user-bubble {
+  max-width: 70%;
+  background: var(--gray-50);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+/* Build Plan V2.6 — Copy/Edit reveal on hover (same pattern as a session-item's
+   rename/delete icons); the branch nav stays visible whenever it applies, since
+   "which version am I on" is a standing fact, not a transient hover affordance. */
+.chat-message-user-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.chat-message-user-action { opacity: 0; }
+.chat-message-user:hover .chat-message-user-action,
+.chat-message-user-action:focus-visible { opacity: 1; }
+
+.chat-message-branch-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+}
+.chat-message-branch-nav button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  padding: 0;
+}
+.chat-message-branch-nav button:hover:not(:disabled) { background: var(--gray-100); color: var(--color-text-primary); }
+.chat-message-branch-nav button:disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+.chat-message-branch-nav button:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* Build Plan V2.6 — the in-place edit box replaces the plain bubble; same pill/composer
+   visual language as the main composer, just anchored to this one message. */
+.chat-message-edit-box {
+  width: 100%;
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+}
+.chat-message-edit-input {
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+}
+.chat-message-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.chat-message-assistant-body {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+}
+
+/* an emergency reply is never styled like an ordinary message — kept as
+   the one deliberate exception to the plain-white canvas: a true medical
+   emergency must stay unmistakable even at the cost of the "no boxes" rule. */
+.chat-message-emergency {
+  max-width: 82%;
+  background: #2A0B0B;
+  color: #F5DBD8;
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+.chat-message-emergency-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--font-weight-bold);
+  color: #FF6B5C;
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-sm);
+}
+
+/* V2.5 — the risk signal leads every answer instead of trailing it. */
+.chat-message-risk-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* V2.1.3 — makes visible whether an answer was checked against real data or is general knowledge. */
+.chat-message-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+.chat-message-source-grounded {
+  color: var(--color-success);
+  background: var(--color-success-bg);
+  padding: 4px var(--space-3);
+  border-radius: var(--radius-pill);
+}
+.chat-message-source-general {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* V2.2.5 — react-markdown emits real <p>/<ul>/<strong> elements; reset their default
+   margins so a rendered answer keeps its intended tight spacing. */
+.chat-message-markdown p { margin: 0 0 var(--space-2) 0; }
+.chat-message-markdown p:last-child { margin-bottom: 0; }
+.chat-message-markdown ul,
+.chat-message-markdown ol {
+  margin: 0 0 var(--space-2) 0;
+  padding-left: var(--space-5);
+}
+.chat-message-markdown ul:last-child,
+.chat-message-markdown ol:last-child { margin-bottom: 0; }
+.chat-message-markdown code {
+  background: var(--color-bg-surface-sunken);
+  border-radius: var(--radius-sm);
+  padding: 0 4px;
+  font-size: 0.9em;
+  font-family: var(--font-family-mono);
+}
+
+/* V2.2.9 — timestamp/action footer on the assistant's reply only. No divider
+   line above it (per the plain-canvas rule) — spacing alone separates it. */
+.chat-message-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-1);
+}
+.chat-message-timestamp {
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-mono);
+  color: var(--color-text-disabled);
+}
+
+/* V2.5 — shared by Copy and Regenerate: icon + text, no fill, hover tint only. */
+.chat-message-footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.chat-message-footer-btn svg { flex-shrink: 0; }
+.chat-message-footer-btn:hover { background: var(--gray-100); color: var(--color-text-primary); }
+.chat-message-footer-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.chat-message-footer-btn:disabled { color: var(--color-text-disabled); cursor: not-allowed; background: none; }
+.chat-message-footer-btn-done { color: var(--color-success); }
+
+/* V2.2.1 — a typing-dots placeholder while a turn is in flight. */
+.chat-message-typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: var(--space-2) 0;
+}
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-action-default);
+  animation: typing-bounce 1.2s infinite ease-in-out;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .typing-dot { animation: none; opacity: 0.85; }
+}
+
+/* ---- Composer — a plain pill, icon-only controls, no filled backgrounds ---- */
+.chat-composer-wrap {
+  padding: var(--space-2) var(--space-10) var(--space-6);
+  max-width: 760px;
+  margin: 0 auto;
+  width: 100%;
+}
+.chat-hero .chat-composer-wrap { padding: 0; max-width: none; }
+
+.chat-composer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: var(--color-bg-page);
+  border: 1.5px solid var(--color-border-default);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
+}
+/* No focus ring on the type bar — a cursor in the textarea (already
+   outline:none, see `.chat-composer-input` below) is signal enough; the
+   pill's border/shadow stay the same whether focused or not. Also
+   overrides the global baseline `:focus-visible` rule (styles.css ~L166),
+   which would otherwise put its own smaller, squared-off ring directly on
+   the textarea itself. */
+.chat-composer-input:focus-visible { outline: none; box-shadow: none; }
+.chat-composer-hero {
+  padding: 10px 10px 10px var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+
+.chat-composer-input {
+  flex: 1;
+  resize: none;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: 1.4;
+  padding: var(--space-2) 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  max-height: 140px;
+  overflow-y: auto;
+}
+.chat-composer-hero .chat-composer-input { font-size: var(--font-size-lg); padding: var(--space-3) 0; }
+/* the placeholder is a one-line prompt — it must never wrap and spill out
+   of the pill's rounded shape, even though typed multi-line text still
+   wraps and grows the textarea normally. */
+.chat-composer-input::placeholder {
+  color: var(--color-text-disabled);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chat-composer-input:disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+
+.chat-composer-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.chat-composer-icon-btn svg { flex-shrink: 0; }
+.chat-composer-icon-btn:hover { background: var(--gray-100); color: var(--color-text-primary); }
+.chat-composer-icon-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.chat-composer-icon-btn:disabled { color: var(--color-text-disabled); cursor: not-allowed; background: none; }
+
+/* Visually hidden — the real file picker is opened programmatically via the upload icon button (`chat-composer-icon-btn`) so it matches the mic/form buttons instead of showing the native OS file input. */
+.chat-composer-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+.chat-composer-send:not(:disabled) { color: var(--color-action-default); }
+
+.chat-composer-mic.listening {
+  color: var(--color-error);
+  background: var(--color-error-bg);
+  animation: mic-pulse 1.4s ease-in-out infinite;
+}
+@keyframes mic-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--color-error-bg); }
+  50% { box-shadow: 0 0 0 6px var(--color-error-bg); }
+}
+
+/* Voice-dictation waveform + timer, shown above the type bar while
+   listening (kokonutui "AI Voice" concept). */
+.chat-voice-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) 0 var(--space-3);
+}
+.chat-voice-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 22px;
+  width: 100%;
+  max-width: 320px;
+}
+.chat-voice-wave-bar {
+  width: 2px;
+  min-height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--color-action-default);
+  animation: voice-wave-pulse 1s ease-in-out infinite;
+}
+.chat-voice-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.chat-voice-timer {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+.chat-voice-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-disabled);
+}
+@keyframes voice-wave-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-voice-wave-bar { animation: none; opacity: 0.85; }
+}
+
+/* ==========================================================================
+   Active-risk rail — right-hand column, same white canvas as the rest of
+   the page (no distinct panel background/border). Rendered only when the
+   session has a flagged risk; the top card carries the risk's severity
+   color as a left accent stripe, per the safety-first emphasis.
+   ========================================================================== */
+.chat-risk-rail {
+  width: var(--risk-rail-width);
+  flex-shrink: 0;
+  height: 100%;
+  background: var(--color-bg-page);
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  overflow-y: auto;
+  transition: width var(--transition-base), padding var(--transition-base);
+}
+.chat-risk-rail.collapsed {
+  width: var(--risk-rail-collapsed-width);
+  padding: var(--space-6) var(--space-2);
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Label + collapse toggle share a row so the button stays put (and keeps
+   pointing the same visual direction, just rotated) whether open or not. */
+.chat-risk-rail-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+.chat-risk-rail.collapsed .chat-risk-rail-top { justify-content: center; }
+
+.chat-risk-rail-collapse-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.chat-risk-rail-collapse-btn svg { flex-shrink: 0; transition: transform var(--transition-base); }
+.chat-risk-rail.collapsed .chat-risk-rail-collapse-btn svg { transform: rotate(180deg); }
+.chat-risk-rail-collapse-btn:hover { background: var(--gray-100); color: var(--color-text-primary); }
+.chat-risk-rail-collapse-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.chat-risk-rail-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-disabled);
+  opacity: 1;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast), max-width var(--transition-base);
+}
+.chat-risk-rail.collapsed .chat-risk-rail-top .chat-risk-rail-label { opacity: 0; max-width: 0; }
+
+/* Collapsed-only severity dot — keeps the signal visible even when the
+   panel is tucked away, instead of an empty strip. */
+.chat-risk-rail-collapsed-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: var(--space-1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), visibility 0s linear 0s;
+}
+.chat-risk-rail.collapsed .chat-risk-rail-collapsed-dot {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transition-fast) var(--transition-fast), visibility 0s linear 0s;
+}
+
+.chat-risk-rail-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transition-fast), visibility 0s linear 0s;
+}
+.chat-risk-rail.collapsed .chat-risk-rail-content {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), visibility 0s linear var(--transition-fast);
+}
+
+.chat-risk-rail-card {
+  background: var(--gray-50);
+  border-left: 4px solid var(--rail-accent, var(--color-border-strong));
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-5) var(--space-5) calc(var(--space-5) - 2px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.chat-risk-rail-card-active {
+  animation: railCardSwap var(--transition-base);
+}
+
+@keyframes railCardSwap {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-risk-rail-card-active { animation: none; }
+}
+
+.chat-risk-rail-pair {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: var(--space-2) 0 var(--space-1);
+}
+
+.chat-risk-rail-summary {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+}
+
+.chat-risk-rail-cypher {
+  margin-top: var(--space-3);
+}
+
+.chat-risk-rail-cypher-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  margin-left: calc(var(--space-2) * -1);
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.chat-risk-rail-cypher-btn:hover { background: var(--gray-100); color: var(--color-text-primary); }
+.chat-risk-rail-cypher-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.chat-risk-rail-cypher-panel {
+  margin-top: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.chat-risk-rail-cypher-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.chat-risk-rail-cypher-code {
+  margin: 0;
+  padding: var(--space-3);
+  background: var(--color-text-primary);
+  color: #e6edf3;
+  border-radius: var(--radius-md);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: var(--line-height-relaxed);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+}
+
+.chat-risk-rail-cypher-note {
+  font-size: 10px;
+  color: var(--color-text-tertiary, var(--color-text-secondary));
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Modal (structured input form)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--color-bg-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  animation: modalOverlayIn var(--transition-base);
+}
+
+.modal-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg, 0 12px 40px rgba(11, 18, 32, 0.25));
+  width: 100%;
+  max-width: 460px;
+  max-height: calc(100vh - var(--space-8));
+  overflow-y: auto;
+  padding: var(--space-6);
+  animation: modalCardIn var(--transition-base);
+}
+
+@keyframes modalOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalCardIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay, .modal-card { animation: none; }
+}
+
+/* ==========================================================================
+   Structured-form risk results (V-hardening polish pass) — same visual
+   language as the chat risk rail (badges, dark Cypher code block) so the
+   two "same Risk shape, different surface" views stay consistent instead
+   of the form results rendering as unstyled default HTML.
+   ========================================================================== */
+.risk-results {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border-default);
+  animation: fadeInUp var(--transition-base);
+}
+
+.risk-results-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-3);
+}
+
+.risk-empty {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--color-severity-minor-bg);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+.risk-empty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-severity-minor);
+  color: #fff;
+}
+
+.risk-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.risk-item {
+  background: var(--gray-50);
+  border-left: 4px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-4) - 2px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  animation: fadeInUp var(--transition-base) backwards;
+}
+
+.risk-item-minor { border-left-color: var(--color-severity-minor); }
+.risk-item-moderate { border-left-color: var(--color-severity-moderate); }
+.risk-item-severe { border-left-color: var(--color-severity-severe); }
+.risk-item-contraindicated { border-left-color: var(--color-severity-contraindicated); }
+
+.risk-item-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.risk-item-summary {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.risk-item-description {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+}
+
+.risk-item-tip {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+}
+
+.risk-item-cypher { margin-top: var(--space-1); }
+
+.error-msg {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-severity-contraindicated-bg);
+  color: var(--color-severity-contraindicated);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  animation: fadeInUp var(--transition-fast);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .risk-results, .risk-item, .error-msg { animation: none; }
+}
+
+.modal-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.modal-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin: 0 0 var(--space-5);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.chat-risk-rail-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.chat-risk-rail-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  font: inherit;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  background: none;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+  margin: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.chat-risk-rail-list-item:hover {
+  background: var(--gray-100);
+  transform: translateX(1px);
+}
+
+.chat-risk-rail-list-item:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.chat-risk-rail-list-item.selected {
+  background: var(--gray-100);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.chat-risk-rail-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Responsive collapse
+   ========================================================================== */
+@media (max-width: 1180px) {
+  .chat-risk-rail { display: none; }
+}
+
+@media (max-width: 760px) {
+  .chat-sidebar:not(.collapsed) { width: var(--chat-sidebar-collapsed-width); }
+  .chat-sidebar:not(.collapsed) .chat-sidebar-top { flex-direction: column; gap: var(--space-2); padding: 0 0 var(--space-3); }
+  .chat-sidebar:not(.collapsed) .chat-nav-row { width: 44px; height: 44px; padding: 0; justify-content: center; }
+  .chat-sidebar:not(.collapsed) .chat-nav-label,
+  .chat-sidebar:not(.collapsed) .chat-sidebar-user-text,
+  .chat-sidebar:not(.collapsed) .chat-sidebar-logout-label {
+    opacity: 0;
+    max-width: 0;
+  }
+  .chat-sidebar:not(.collapsed) .chat-sidebar-recents { opacity: 0; visibility: hidden; pointer-events: none; }
+  .chat-sidebar:not(.collapsed) .chat-sidebar-logout { width: 44px; height: 44px; padding: 0; justify-content: center; }
+  .chat-transcript, .chat-composer-wrap { padding-left: var(--space-4); padding-right: var(--space-4); }
+}
+
+.mono { font-family: var(--font-family-mono); }
