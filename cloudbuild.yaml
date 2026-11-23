@@ -1,8 +1,0 @@
-# Builds the API image with Cloud Build (no local Docker needed):
-#   gcloud builds submit --config cloudbuild.yaml \
-#     --substitutions=_IMAGE=REGION-docker.pkg.dev/PROJECT/REPO/disa-api:TAG .
-steps:
-  - name: gcr.io/cloud-builders/docker
-    args: ["build", "-f", "apps/api/Dockerfile", "-t", "${_IMAGE}", "."]
-images:
-  - "${_IMAGE}"
