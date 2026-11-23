@@ -12,7 +12,12 @@ import type {
 } from "@disa/shared-types";
 import { parseNdjsonChunk } from "./chat/ndjsonStream";
 
-const API_BASE = "http://localhost:4000/api/v1";
+// Set VITE_API_BASE_URL at build time (e.g. in Vercel project env vars) to the
+// deployed API origin, e.g. "https://disa-api-xxxx.a.run.app". Vite inlines it
+// into the bundle, so changing it requires a rebuild/redeploy of the web app.
+// Falls back to the local dev API when unset.
+const API_ORIGIN = (import.meta.env.VITE_API_BASE_URL ?? "http://localhost:4000").replace(/\/+$/, "");
+const API_BASE = `${API_ORIGIN}/api/v1`;
 
 class ApiError extends Error {
   constructor(public status: number, message: string, public code?: string) {

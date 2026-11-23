@@ -1,34 +1,36 @@
-# Use the official Node image (LTS)
-FROM node:20-alpine AS builder
+# API image for Cloud Run. Build from the REPO ROOT (the API depends on the
+# workspace package @disa/shared-types):
+#   docker build -f apps/api/Dockerfile -t disa-api .
+#
+# Runs TypeScript directly via tsx: @disa/shared-types ships raw .ts and the
+# API imports runtime values from it (e.g. SEVERITIES), so a plain `tsc` emit
+# run with `node` can't resolve it. tsx handles both.
+#
+# Debian slim (glibc), not alpine: bcrypt and pdfjs-dist's optional
+# @napi-rs/canvas ship prebuilt glibc binaries.
 
-# Set working directory
+FROM node:20-slim AS deps
 WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
 
-# Install pnpm (fast package manager)
-RUN npm i -g pnpm
+# Manifests first so the dependency layer is cached across source changes.
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps/api/package.json apps/api/
+COPY apps/web/package.json apps/web/
+COPY packages/shared-types/package.json packages/shared-types/
+RUN pnpm install --frozen-lockfile --prod --filter api...
 
-# Copy only package metadata first (caches deps)
-COPY . .
-RUN pnpm install --frozen-lockfile
-RUN pnpm --filter api run build
-
-# Build the TypeScript sources
-RUN pnpm --filter api run build
-
-# -------------------------------------------------
-# Runtime image
-FROM node:20-alpine
-
+FROM node:20-slim
 WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=deps /app /app
+COPY packages/shared-types/src packages/shared-types/src
+COPY apps/api/src apps/api/src
+COPY apps/api/tsconfig.json apps/api/
 
-# Copy only the compiled output and runtime deps
-COPY --from=builder /app/apps/api/dist ./dist
-COPY --from=builder /app/apps/api/package.json ./package.json
-COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
-COPY --from=builder /app/node_modules ./node_modules
-
-# Expose the server port (the code listens on 3000)
-EXPOSE 3000
-
-# Run the compiled server
-CMD ["node", "dist/server.js"]
+WORKDIR /app/apps/api
+USER node
+# Cloud Run sets PORT (default 8080); config.ts reads it.
+ENV PORT=8080
+EXPOSE 8080
+CMD ["node", "--import", "tsx", "src/server.ts"]

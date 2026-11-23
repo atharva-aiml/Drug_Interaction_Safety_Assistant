@@ -17,10 +17,25 @@ import { dataImportRouter } from "./modules/data-import/dataImport.routes.js";
 import { chatSessionRouter } from "./modules/chat-sessions/chatSession.routes.js";
 import { prescriptionRouter } from "./modules/prescription/prescription.routes.js";
 import { getDriver } from "./db/neo4jClient.js";
+import { config } from "./config.js";
 
 export const app = express();
 
-app.use(cors());
+// Cloud Run sits behind Google's front end; trust its X-Forwarded-* headers.
+app.set("trust proxy", true);
+
+app.use(
+  cors(
+    config.corsOrigins.length === 0
+      ? undefined
+      : {
+          origin: (origin, callback) => {
+            // No Origin header = non-browser caller (curl, health checks) — CORS doesn't apply.
+            callback(null, !origin || config.corsOrigins.includes(origin.replace(/\/+$/, "")));
+          },
+        }
+  )
+);
 app.use(express.json());
 
 app.get("/api/v1/health", asyncHandler(async (_req, res) => {

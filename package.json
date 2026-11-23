@@ -10,5 +10,6 @@
     "db:seed": "pnpm --filter api db:seed",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test"
-  }
+  },
+  "packageManager": "pnpm@9.15.9"
 }

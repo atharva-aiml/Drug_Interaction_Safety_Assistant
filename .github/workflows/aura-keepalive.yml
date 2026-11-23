@@ -1,0 +1,53 @@
+# Keeps the Neo4j AuraDB Free instance from being paused for inactivity by
+# running one trivial query (RETURN 1) every day.
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   NEO4J_URI       e.g. neo4j+s://xxxxxxxx.databases.neo4j.io
+#   NEO4J_USER      usually the instance ID or "neo4j"
+#   NEO4J_PASSWORD
+#
+# Note: GitHub disables scheduled workflows in a PUBLIC repo after 60 days with
+# no repository activity — re-enable it from the Actions tab if that happens.
+name: Aura keep-alive
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # daily, 06:17 UTC (off the top of the hour to avoid queue spikes)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install neo4j-driver
+        run: npm install --no-save --no-audit --no-fund neo4j-driver@5
+
+      - name: RETURN 1
+        env:
+          NEO4J_URI: ${{ secrets.NEO4J_URI }}
+          NEO4J_USER: ${{ secrets.NEO4J_USER }}
+          NEO4J_PASSWORD: ${{ secrets.NEO4J_PASSWORD }}
+        run: |
+          node --input-type=module -e '
+            import neo4j from "neo4j-driver";
+            const { NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD } = process.env;
+            if (!NEO4J_URI || !NEO4J_USER || !NEO4J_PASSWORD) {
+              console.error("Missing NEO4J_* repository secrets");
+              process.exit(1);
+            }
+            const driver = neo4j.driver(NEO4J_URI, neo4j.auth.basic(NEO4J_USER, NEO4J_PASSWORD));
+            try {
+              const { records } = await driver.executeQuery("RETURN 1 AS ok");
+              console.log("Aura responded:", records[0].get("ok").toNumber());
+            } finally {
+              await driver.close();
+            }
+          '
